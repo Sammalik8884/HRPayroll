@@ -5,9 +5,7 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ─── Serilog structured logging ─────────────────────────────────────────────
-// Structured: every log entry has named properties, not just a string.
-// {EmployeeId}, {Duration} become queryable fields in Azure App Insights.
+
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .Enrich.FromLogContext()
@@ -18,11 +16,9 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 
-// ─── Controllers & API ──────────────────────────────────────────────────────
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// ─── Swagger with JWT support ───────────────────────────────────────────────
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -32,7 +28,6 @@ builder.Services.AddSwaggerGen(c =>
         Description = "HR & Payroll Management System"
     });
 
-    // This adds the "Authorize" button to Swagger so you can test JWT endpoints
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "JWT Authorization header. Enter: Bearer {your-token}",
@@ -59,15 +54,12 @@ builder.Services.AddCors(options =>
     });
 });
 
-// ─── JWT Authentication ──────────────────────────────────────────────────────
-// (Full JWT setup comes in Part 5 — skeleton only for now)
+
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-// ─── Middleware Pipeline Order (ORDER MATTERS) ───────────────────────────────
-// ExceptionMiddleware MUST be first — wraps everything, catches all exceptions
 app.UseMiddleware<ExceptionMiddleware>();
 
 if (app.Environment.IsDevelopment())
@@ -78,8 +70,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("AllowFrontend");
-app.UseAuthentication();    // "who are you?" must come before authorization
-app.UseAuthorization();     // "are you allowed?" must come after authentication
+app.UseAuthentication();
+app.UseAuthorization();     
 app.MapControllers();
 
 app.Run();

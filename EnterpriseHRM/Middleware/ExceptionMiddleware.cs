@@ -23,11 +23,10 @@ namespace Application.Middleware
         {
             try
             {
-                await _next(context);   // call the next middleware/controller
+                await _next(context);  
             }
             catch (Exception ex)
             {
-                // Any exception thrown anywhere downstream ends up here
                 await HandleExceptionAsync(context, ex);
             }
         }
@@ -52,14 +51,13 @@ namespace Application.Middleware
                     (HttpStatusCode.UnprocessableEntity,
                      ApiResponse.Fail(ex.Message)),
 
-                // Anything else: log it (internal error, don't leak details to client)
+             
                 _ =>
                     (HttpStatusCode.InternalServerError,
                      ApiResponse.Fail("An unexpected error occurred. Please contact support."))
             };
             if (exception is not DomainException)
             {
-                // Log unexpected errors with full details for debugging
                 _logger.LogError(exception,
                     "Unhandled exception: {Message} | Path: {Path}",
                     exception.Message,
