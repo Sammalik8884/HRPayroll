@@ -9,7 +9,7 @@ namespace Domain.Entities
         public int? ParentId { get; set; }
         public virtual Company Company { get; set; } = null!;
         public virtual ICollection<Department> SubDepartments { get; set; } = new List<Department>(); 
-        public virtual ICollection<Employee> Employees { get; set; }
+       // public virtual ICollection<Employee> Employees { get; set; }
         public virtual Department? Parent { get; set; }
 
     }

@@ -1,5 +1,4 @@
 using Application.Middleware;
-using Application.Middleware;
 using Microsoft.OpenApi;
 using Serilog;
 
@@ -15,7 +14,7 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Host.UseSerilog();
-
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
@@ -40,7 +39,6 @@ builder.Services.AddSwaggerGen(c =>
    
 });
 
-// ─── CORS ────────────────────────────────────────────────────────────────────
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
