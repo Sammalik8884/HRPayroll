@@ -4,8 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <TargetFramework>net10.0</TargetFramework>
-    <NuGetAuditSuppress>NU1903</NuGetAuditSuppress>
+ 
   </PropertyGroup>
 
   <ItemGroup>

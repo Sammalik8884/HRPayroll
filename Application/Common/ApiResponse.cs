@@ -19,15 +19,8 @@ namespace Application.Common
                 Data = data
             };
         }
-        public static ApiResponse<T> Fail(string message, List<string> errors = null)
-        {
-            return new ApiResponse<T>
-            {
-                Success = false,
-                Message = message,
-                Errors = errors ?? new()
-            };
-        }
+        public static ApiResponse<T> Fail(string message, List<string>? errors = null) =>
+     new() { Success = false, Message = message, Errors = errors ?? new List<string>() };
         public static ApiResponse<T> ValidationFail(List<string> errors)
         {
             return new ApiResponse<T>
