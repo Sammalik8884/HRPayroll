@@ -11,6 +11,7 @@ namespace Domain.Entities
         public decimal LeaveEncashmentAmount { get; set; }
         public decimal OutstandingLoan { get; set; }
         public decimal NetSettlement { get; set; }
+        public virtual Employee Employee { get; set; } = null!;
 
     }
 }

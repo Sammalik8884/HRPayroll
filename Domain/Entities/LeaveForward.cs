@@ -11,6 +11,10 @@ namespace Domain.Entities
         public DateTime FromYear { get; set; }
         public DateTime ToYear { get; set; }
         public decimal CarriedDays { get; set; }
+        public virtual Employee Employee { get; set; }=null!;
+        public virtual LeaveType LeaveType { get; set; }  =null!;
+
+
 
     }
 }

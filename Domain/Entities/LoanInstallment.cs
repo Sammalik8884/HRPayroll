@@ -13,8 +13,6 @@ namespace Domain.Entities
         public decimal Amount { get; set; }
         public bool IsPaid { get; set; } = false;
         public DateTime? PaidDate { get; set; }
-
-        // Navigation
         public virtual Loan Loan { get; set; } = null!;
     }
 }

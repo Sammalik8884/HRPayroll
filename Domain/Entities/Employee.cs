@@ -51,7 +51,11 @@ namespace Domain.Entities
         public virtual ICollection<SalaryIncrement> SalaryIncrements { get; set; } = new List<SalaryIncrement>();
         public virtual ICollection<EmployeeLeave> Leaves { get; set; } = new List<EmployeeLeave>();
         public virtual ICollection<Loan> Loans { get; set; } = new List<Loan>();
-        public virtual ICollection<Advance> Advances { get; set; } = new List<Advance>();
+        public virtual ICollection<Advance> Advances { get; set; } = new List<Advance>(); 
+        public virtual ICollection<LeaveForward> LeaveForwards { get; set; } = new List<LeaveForward>();
+        public virtual ICollection<LeaveEncash> LeaveEncashes { get; set; } = new List<LeaveEncash>(); 
+
+
 
     }
 }

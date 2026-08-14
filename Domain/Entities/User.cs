@@ -12,5 +12,6 @@ namespace Domain.Entities
         public int? EmployeeId { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }
          = new List<UserRole>();
+        public virtual Employee Employee { get; set; } = null!;
     }
 }

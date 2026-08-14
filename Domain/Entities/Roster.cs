@@ -11,5 +11,6 @@ namespace Domain.Entities
         public DateTime EndDate { get; set; }
         public bool IsActive { get; set; } = true;
         public virtual Employee Employee { get; set; } = null!;
+        public virtual Shift Shift { get; set; } = null!;
     }
 }

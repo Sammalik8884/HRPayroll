@@ -27,6 +27,7 @@ namespace Domain.Entities
         public int AbsentDays { get; set; }
         public decimal OvertimeHours { get; set; }
         public virtual PayrollRun PayrollRun { get; set; } = null!;
+        public virtual Employee Employee { get; set; } = null!;
 
 
     }
