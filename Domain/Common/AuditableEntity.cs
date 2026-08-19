@@ -8,6 +8,6 @@ namespace Domain.Common
     {
         public bool IsDeleted { get; set; } = false;
         public DateTime? DeletedAt { get; set; }
-        public DateTime? DeletedBy { get; set; }
+        public string? DeletedBy { get; set; }
     }
 }

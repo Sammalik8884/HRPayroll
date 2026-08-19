@@ -8,7 +8,7 @@ namespace Domain.Interfaces
 {
     public interface IRepository<T>  where T : BaseEntity
     {
-        Task<T> GetIdAsync(int id, CancellationToken ct = default);
+        Task<T? > GetIdAsync(int id, CancellationToken ct = default);
         Task<List<T>> GetAllAsync(CancellationToken ct = default);
         Task AddAsync(T entity, CancellationToken ct = default);
         void Update(T entity);

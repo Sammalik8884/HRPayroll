@@ -94,7 +94,17 @@ namespace Infrastructure.Persistence
 
                 }
             }
-            
+            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
+            {
+                if (entry.State == EntityState.Deleted)
+                {
+                    entry.State = EntityState.Modified; 
+                    entry.Entity.IsDeleted = true;      
+                    entry.Entity.DeletedAt = DateTime.UtcNow;
+                    entry.Entity.DeletedBy =_currentuser.UserId;
+                }
+            }
+
 
             return await base.SaveChangesAsync(cancellationToken);
         }
