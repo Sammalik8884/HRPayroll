@@ -11,8 +11,7 @@ namespace Infrastructure.Persistence.Configurations
         {
             builder.ToTable("LeaveEncashes");
             builder.HasKey(e => e.Id);
-            //when to use hasone and when to with many and withone and vice versa?
-            builder.HasOne(e=>e.Employee).WithMany().HasForeignKey(e=>e.EmployeeId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(e=>e.Employee).WithMany(e=>e.LeaveEncashes).HasForeignKey(e=>e.EmployeeId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(e => e.LeaveType).WithMany().HasForeignKey(e=>e.LeaveTypeId).OnDelete(DeleteBehavior.Restrict);
             builder.HasQueryFilter(e => !e.IsDeleted);
             builder.Property(e => e.Days).HasPrecision(18, 4);

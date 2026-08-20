@@ -1,4 +1,8 @@
 using Application.Middleware;
+using Domain.Interfaces;
+using Infrastructure.Persistence;
+using Infrastructure.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using Serilog;
 
@@ -17,6 +21,13 @@ builder.Host.UseSerilog();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDbContext<HRPayrollDbContext>(options =>
+    options.UseSqlServer(builder.Configuration
+        .GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
 builder.Services.AddSwaggerGen(c =>
 {

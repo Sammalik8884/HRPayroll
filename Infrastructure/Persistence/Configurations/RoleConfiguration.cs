@@ -14,8 +14,6 @@ namespace Infrastructure.Persistence.Configurations
             builder.Property(e => e.Name).IsRequired().HasMaxLength(100);
             builder.Property(e => e.Description).IsRequired().HasMaxLength(100);
             builder.Property(e => e.IsActive).HasDefaultValue(true);
-            builder.HasMany(e => e.UserRoles).WithOne(e => e.Role).HasForeignKey(e => e.RoleId).OnDelete(DeleteBehavior.Restrict);
-            builder.HasMany(e => e.RolePermissions).WithOne(e => e.Role).HasForeignKey(e => e.RoleId).OnDelete(DeleteBehavior.Restrict);
 
 
 

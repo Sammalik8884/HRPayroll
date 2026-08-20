@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -16,9 +17,14 @@ namespace Infrastructure.Persistence.Configurations
             builder.Property(e => e.TotalDays).HasPrecision(18, 4);
             builder.Property(e => e.Reason).HasMaxLength(300);
             builder.Property(e => e.Status)
-                .HasConversion<string>()
-                .HasMaxLength(20); builder.HasOne(e => e.Employee).WithMany().HasForeignKey(e => e.EmployeeId).OnDelete(DeleteBehavior.Restrict);   
-            builder.HasOne(e=>e.LeaveType).WithMany().HasForeignKey(e=>e.LeaveTypeId).OnDelete(DeleteBehavior.Restrict);
+       .HasConversion<string>()
+       .HasMaxLength(20)
+       .HasDefaultValue(LeaveStatus.Pending);
+         
+            builder.HasOne(e => e.Employee)
+                .WithMany(e => e.Leaves)  
+                .HasForeignKey(e => e.EmployeeId)
+                .OnDelete(DeleteBehavior.Restrict); builder.HasOne(e=>e.LeaveType).WithMany().HasForeignKey(e=>e.LeaveTypeId).OnDelete(DeleteBehavior.Restrict);
 
         }
     }

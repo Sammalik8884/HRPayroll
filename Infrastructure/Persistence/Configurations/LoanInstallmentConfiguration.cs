@@ -10,10 +10,10 @@ namespace Infrastructure.Persistence.Configurations
         {
             builder.ToTable("LoanInstallments");
             builder.HasKey(e => e.Id);
-            builder.HasOne(e=>e.Loan).WithMany().HasForeignKey(e=>e.LoanId).OnDelete(DeleteBehavior.Restrict);
             builder.Property(e => e.DueDate).HasColumnType("datetime2");
             builder.Property(e => e.PaidDate).HasColumnType("datetime2");
             builder.Property(e => e.IsPaid).HasDefaultValue(false);
+            builder.Property(e => e.Amount).HasPrecision(18, 4);
 
         }
     }

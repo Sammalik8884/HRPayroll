@@ -10,9 +10,14 @@ namespace Infrastructure.Persistence.Configurations
         {
             builder.ToTable("UserRoles");
             builder.HasKey(x => x.Id);
-            builder.HasOne(e => e.User).WithMany().HasForeignKey(e => e.UserId).OnDelete(DeleteBehavior.Restrict);
-            builder.HasOne(e => e.Role).WithMany().HasForeignKey(e => e.RoleId).OnDelete(DeleteBehavior.Restrict);
-
+            builder.HasOne(e => e.User)
+                .WithMany(e => e.UserRoles)  
+                .HasForeignKey(e => e.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(e => e.Role)
+                .WithMany(e => e.UserRoles)  
+                .HasForeignKey(e => e.RoleId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
