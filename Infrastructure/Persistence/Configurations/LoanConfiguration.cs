@@ -11,7 +11,6 @@ namespace Infrastructure.Persistence.Configurations
         {
             builder.ToTable("Loans");
             builder.HasKey(e => e.Id);
-            // what is the difference between an Interface and Abstract class? also in function and store procedure?
             builder.HasOne(e => e.Employee).WithMany(e=>e.Loans).HasForeignKey(e => e.EmployeeId).OnDelete(DeleteBehavior.Restrict);
             builder.Property(e => e.LoanAmount).HasPrecision(18, 4);
             builder.Property(e => e.RemainingBalance).HasPrecision(18, 4);

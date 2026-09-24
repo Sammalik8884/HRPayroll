@@ -1,7 +1,5 @@
 ﻿using Application.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace Application.Exceptions
 {
@@ -22,11 +20,12 @@ namespace Application.Exceptions
     {
         public UnauthorizedException(string message) : base(message) { }
     }
-}
-public class NotFoundException : DomainException
-{
-    public NotFoundException(string message) : base(message) { }
+    public class NotFoundException : DomainException
+    {
+        public NotFoundException(string message) : base(message) { }
 
-    public NotFoundException(string name, object key)
-        : base($"{name} with id '{key}' was not found.") { }
+        public NotFoundException(string name, object key)
+            : base($"{name} with id '{key}' was not found.") { }
+    }
 }
+
