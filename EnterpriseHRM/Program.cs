@@ -1,4 +1,5 @@
 using Application.Interfaces;
+using Application.Interfaces.Grade;
 using Application.Middleware;
 using Application.Validators;
 using Domain.Interfaces;
@@ -39,6 +40,7 @@ builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICompanyService,CompanyService>();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateCompanyValidator>();
+builder.Services.AddScoped<IGradeService, GradeService>();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo

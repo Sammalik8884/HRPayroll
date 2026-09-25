@@ -10,11 +10,11 @@ namespace Infrastructure.Services
     public class CompanyService : ICompanyService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ICurrentUserService _currentUser;
-        public CompanyService(IUnitOfWork unitOfWork, ICurrentUserService currentUser)
+       
+        public CompanyService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _currentUser = currentUser;
+            
         }
         public async Task<List<CompanyDto>> GetAllAsync(CancellationToken ct = default)
         {

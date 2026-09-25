@@ -12,11 +12,11 @@ namespace HRPayroll.API.Controllers
     [Authorize]
     public class CompanyController : ControllerBase
     {
-        private readonly ICurrentUserService _currentUser;
+        
         private readonly ICompanyService _companyService;
-       public CompanyController (ICurrentUserService currentUser, ICompanyService companyService)
+       public CompanyController ( ICompanyService companyService)
         {
-            _currentUser = currentUser;
+            
             _companyService = companyService;
         }
         [HttpGet]
