@@ -3,7 +3,7 @@ using Application.DTOs.Company;
 using Application.Interfaces;
 using Domain.Entities;
 using Domain.Interfaces;
-using System.Linq;
+
 
 namespace Infrastructure.Services
 {

@@ -1,7 +1,4 @@
-﻿
-
-using Application.DTOs.Company;
-using Application.DTOs.Grade;
+﻿using Application.DTOs.Grade;
 
 namespace Application.Interfaces.Grade
 {

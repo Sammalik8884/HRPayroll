@@ -40,7 +40,15 @@ builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICompanyService,CompanyService>();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateCompanyValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateCompanyValidator>();
 builder.Services.AddScoped<IGradeService, GradeService>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateGradeValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateDesignationValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateDesignationValidator>();
+builder.Services.AddScoped<IDesignationService, DesignationService>();
+builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<LoginRequestValidator>();
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo

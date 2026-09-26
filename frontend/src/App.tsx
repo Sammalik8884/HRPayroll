@@ -10,6 +10,8 @@ import { CompaniesPage } from '@/pages/companies/CompaniesPage';
 import { AttendancePage } from '@/pages/attendance/AttendancePage';
 import { LeavesPage } from '@/pages/leaves/LeavesPage';
 import { PayrollPage } from '@/pages/payroll/PayrollPage';
+import { DesignationsPage } from '@/pages/designations/DesignationsPage';
+import { GradesPage } from '@/pages/grades/GradesPage';
 import { StubPage } from '@/pages/StubPage';
 
 const queryClient = new QueryClient({
@@ -46,8 +48,8 @@ export default function App() {
               <Route path="/payroll" element={<PayrollPage />} />
               <Route path="/payroll/new" element={<StubPage title="Run Payroll" description="Process monthly salary for all employees" />} />
               <Route path="/departments" element={<StubPage title="Departments" description="Manage organizational departments" />} />
-              <Route path="/designations" element={<StubPage title="Designations" description="Manage employee designations and job titles" />} />
-              <Route path="/grades" element={<StubPage title="Grades" description="Manage salary grades and pay scales" />} />
+              <Route path="/designations" element={<DesignationsPage />} />
+              <Route path="/grades" element={<GradesPage />} />
               <Route path="/locations" element={<StubPage title="Locations" description="Manage office and branch locations" />} />
               <Route path="/shifts" element={<StubPage title="Shifts" description="Manage work shifts and schedules" />} />
               <Route path="/roles" element={<StubPage title="Roles & Permissions" description="Manage system roles and access control" />} />
